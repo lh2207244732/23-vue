@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p id="app">
+            {{message}}
+        </p>
+    </div>
+    <div>
+        <p id="app2">
+            {{message}}
+        </p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm=new Vue({
+
+        el:'#app',
+        data:{
+            message:'hello'
+        },
+        beforeCreate:function(){//组件创建之前执行
+            console.log('beforeCreate...')
+            console.log(this.$data)
+            console.log(this.$el)
+            console.log(this.$refs.elem)
+        },
+        created:function(){//组件创建之后执行
+            console.log('beforeCreate...')
+            console.log(this.$data)
+            console.log(this.$el)
+            console.log(this.$refs.elem)
+        },
+        beforeMount:function(){//组件挂载前执行
+
+        },
+        mounted:function(){//组件挂载后执行
+
+        },
+        beforeUpdate:function(){//组件更新前执行
+
+        },
+        updated:function(){//组件更新后执行
+
+        },
+        beforeDestory:function(){//组件销毁前执行
+
+        },
+        destory:function(){//组件销毁后执行
+
+        }
+    })
+    let vm2=new Vue({
+        el:'#app2',
+        data:{
+            message:'app2...'
+        }
+    })
+</script>
+</html>
