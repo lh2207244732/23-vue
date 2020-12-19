@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-show改变的是css,全部都加载在dom节点中 -->
+
+    <div id="app">
+         <table>
+             <tr>
+                 <th>姓名</th>
+                 <th>年龄</th>
+                 <th>成绩</th>
+                 <th>等级</th>
+             </tr>
+             <tr v-for='person in persons'>
+                 <td>{{person.name}}</td>
+                 <td>{{person.age}}</td>
+                 <td>{{person.score}}</td>
+                 <td v-if='person.score>=85' >优秀</td>
+                 <td v-else-if='person.score>=75' >合格</td>
+                 <td v-else-if='person.score<70' >不合格</td>
+             </tr>
+         </table>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:'#app',
+        data:{
+            persons:[
+                {name:'Amy',age:23,score:88},
+                {name:'Jack',age:19,score:85},
+                {name:'Lucy',age:24,score:78},
+                {name:'Tom',age:26,score:66},
+            ],
+        }
+    })
+
+</script>
+
+</html>

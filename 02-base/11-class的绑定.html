@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            margin-top: 20px;
+            margin-left: 20px;
+            width: 500px;
+            height: 50px;
+            border: 1px #cccccc solid;
+        }
+        .active{
+            background-color: skyblue;
+        }
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class=" active error" id="box">我是div div class="box active error"</div>
+        <div id="box">我是div div class="box active error"</div>
+        <!-- 基本绑定 -->
+        <div :class="strClass" id="box">我是div div  :class="strClass"</div>
+        <!-- 对象语法 -->
+        <div :class="{active:true,error:true}" id="box">我是div div :class="{active:true,error:true}"</div>
+        <div :class="{active:isActive,error:isError}" id="box">我是div div :class="{active:isActive,error:isError}"</div> 
+        <div :class="objClass" id="box">我是div div :class="objClass" id="box""</div> 
+        <!-- 数组语法 -->
+        <div :class="['active','error']" id="box">我是div div :class="['active','error']"</div>
+        <div :class="[isActive?'active':'',isError?'error':'']" id="box">我是div div :class="[isActive?'active':'',isError?'error':'']"]"</div>
+        <div :class="arrClass" id="box">我是div div :class="arrClass"</div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:'#app',
+        data:{
+            strClass:'active error',
+            isActive:true,
+            isError:r=true,
+            objClass:{
+                active:true,
+                error:true
+            },
+            arrClass:['active', 'error']
+        }
+    })
+
+</script>
+
+</html>
