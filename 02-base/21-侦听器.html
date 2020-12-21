@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="number" v-model="price" >
+        <p>{{price}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:'#app',
+        data:{
+            price:0
+        },
+        methods:{
+           
+        },
+        watch:{
+            price(){
+                if(this.price>=10){
+                    alert('已经达到最大值')
+                }
+            }
+        }   
+    })
+    /*
+    //除了watch选项之外，还可以使用命令式vm.$watch api 以下方法与watch选项等价
+    vm.$watch("price",function(){
+        if(this.price>=10){
+                    alert('已经达到最大值')
+                }
+    })
+    */
+</script>
+</html>
