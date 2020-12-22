@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用组件 -->
+        <button v-for="(tab,index) in tabs " @click="slectedIndex=index" :key="index">
+            {{tab}}
+        </button>
+        <!-- //使用keep-alive将动态元素包裹起来，即可保存状态 -->
+        <keep-alive>
+            <component :is="currentComponent"></component>
+        </keep-alive>
+    </div>
+
+    <template id="tab-home">
+        <div>
+            <p>this is home page</p>
+        </div>
+    </template>
+    <template id="tab-articles">
+        <div>
+            <ul>
+                <li v-for="article in articles" :key="article.id" @click="selectedArticle=article">
+                    {{article.title}}
+                </li>
+            </ul>
+            <div v-if="selectedArticle">
+                {{selectedArticle.content}}
+            </div>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('tab-home', {
+        template: '#tab-home'
+    })
+    Vue.component('tab-articles', {
+        data() {
+            return {
+                articles: [
+                    { id: 1, title: 'vue', content: 'vue 是一款渐进式框架' },
+                    { id: 2, title: 'react', content: 'react 是一款前端UI框架' }
+                ],
+                selectedArticle: null
+            }
+        },
+        template: '#tab-articles'
+    })
+    const vm1 = new Vue({
+        el: '#app',
+        data: {
+            tabs: ['home', 'articles'],
+            slectedIndex: 0
+        },
+        //计算属性
+        computed: {
+            currentComponent() {
+                return 'tab-' + this.tabs[this.slectedIndex]
+            }
+        }
+
+    })
+</script>
+
+</html>
