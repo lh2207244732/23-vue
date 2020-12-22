@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用组件 -->
+        <my-Component :msg="msg" ></my-Component>
+    </div>
+    <template id="my-component">
+        <p>我是一个组件自身数据：{{msg}}<br>
+            我是传递过来的数据：{{score}}
+        </p>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 定义组件
+    const myComponent = Vue.extend({
+        template: '#my-component',
+        data(){
+            return{
+                score:90
+            }
+        },
+        //接收传递的数据(指定属性和默认值)
+        props:{
+            msg:{
+                type:String,
+                default:'world'
+            }
+        }
+     
+    })
+    //注册组件
+    Vue.component('my-component',myComponent)
+    const vm1 = new Vue({
+        el: '#app',
+        //data中的数据传递给子组件
+        data:{
+            msg:'hello'
+        }
+    })
+</script>
+
+</html>
