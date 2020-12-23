@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <layout>
+            <!-- 设置匿名插槽的内容 -->
+            <p>我是内容</p>
+        </layout>
+    </div>
+
+    <template id="layout">
+        <div>
+            <nav>导航部分</nav>
+            <!-- 设置匿名插槽 -->
+            <slot></slot>
+            <footer>footer部分</footer>
+        </div>
+    </template>
+  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('layout', {
+        template: '#layout'
+    })
+    const vm1 = new Vue({
+        el: '#app',
+
+    })
+</script>
+
+</html>

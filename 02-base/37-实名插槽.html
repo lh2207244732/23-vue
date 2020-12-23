@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <layout>
+            <!-- 设置实名插槽的内容 必须使用template包裹 v-slot可以简写成# -->
+            <template  v-slot:focus >
+                <p>我是focus内容</p>
+            </template>
+            <template  #content >
+                <p>我是content内容</p>
+            </template>
+        </layout>
+    </div>
+
+    <template id="layout">
+        <div>
+            <nav>导航部分</nav>
+            <!-- 设置插槽 -->
+            <div class="focus" >
+                <slot name="focus" >默认的focus内容</slot>
+            </div>
+            <div class="content" >
+                <slot name="content" >默认的content内容</slot>
+            </div>
+            <footer>footer部分</footer>
+        </div>
+    </template>
+  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('layout', {
+        template: '#layout'
+    })
+    const vm1 = new Vue({
+        el: '#app',
+
+    })
+</script>
+
+</html>

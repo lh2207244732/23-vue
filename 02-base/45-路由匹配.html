@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+       <p>
+        <router-link to="/home">Go to home</router-link>
+        <router-link to="/articles">Go to articles</router-link>
+       </p>
+       <!-- 路由出口 -->
+       <router-view></router-view>
+
+    </div>
+    <template id="home">
+        <div>home page</div>
+    </template>
+    <template id="articles">
+        <div>articles page</div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./js/vue-router.js"></script>
+<script>
+    // 1.定义路由组件
+    const Home=Vue.extend({
+        template: '#home'
+    })
+    const Articles=Vue.extend({
+        template: '#articles'
+    })
+    //2.定义路由
+    const routes=[
+        {path:'/home',component:Home},
+        {path:'/articles',component:Articles}
+    ]
+    //3.根据路由创建router实例
+    const router=new VueRouter({
+        routes:routes
+    })
+    //4.创建根实例，配置router
+    const vm = new Vue({
+        el: '#app',
+        router
+    })
+   
+</script>
+
+</html>
