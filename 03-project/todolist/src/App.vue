@@ -1,23 +1,31 @@
+<!--整个页面的根组件-->
+
+
+<!--组件页面的结构-->
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <nav>
+      <router-link to="/home">Home</router-link> |
+      <router-link to="/todolist">Todolist</router-link>
+    </nav>
+    <!-- 路由出口 -->
+    <router-view></router-view>
   </div>
 </template>
 
+<!--组件页面逻辑-->
 <script>
+// 引入组件
+import Home from "./pages/home";
+// 导出当前组件的配置
 export default {
-  name: 'App'
-}
+  // 注册组件
+  components: {
+    Home,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<!--组件页面样式-->
+<style lang="less">
 </style>
