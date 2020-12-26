@@ -1,8 +1,10 @@
 import axios from 'axios'
+import {LOAD_ITEM} from './types'
+
 export default{
-    async loadItem({commit}){
+    async [LOAD_ITEM]({commit}){
         const result = await axios.get('http://127.0.0.1:3000')
         //commit一个mutation
-        commit('loadItem', result.data)
+        commit(LOAD_ITEM, result.data)
     }
 }
