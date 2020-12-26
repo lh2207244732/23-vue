@@ -1,8 +1,8 @@
 <!--1 模板-->
 <template>
   <div class="Todolist">
-    <Head></Head>
-    <List :list="list"></List>
+    <Head :addItem="addItem"></Head>
+    <List :list="list" :delItem="delItem"></List>
   </div>
 </template>
 <!--2 逻辑-->
@@ -32,7 +32,18 @@ export default {
     const result = await axios.get("http://127.0.0.1:3000");
     this.list = result.data;
   },
-  methods: {},
+  methods:{
+        addItem(task){
+            this.list.push({
+                id:Date.now(),
+                task:task
+            })
+        },
+        delItem(id){
+            const list = this.list.filter(item=>item.id != id)
+            this.list = list
+        }
+    },
   computed: {
     total() {
       return this.list.length;

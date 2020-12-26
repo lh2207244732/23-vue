@@ -9,11 +9,6 @@
 name: "Head";
 export default {
     name:'Home',
-    props:{
-      addItem:{
-        type:Function
-      }
-    },
     data(){
       return{
         task:''
@@ -21,7 +16,11 @@ export default {
     },
     methods:{
       handleAddItem(){
-        this.addItem(this.task),
+        const payload={
+          id:Date.now(),
+          task:this.task
+        }
+        this.$store.commit('addItem',payload)
         this.task=''
       }
     }

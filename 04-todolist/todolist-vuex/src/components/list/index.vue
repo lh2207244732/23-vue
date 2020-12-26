@@ -3,34 +3,25 @@
     <transition-group class="list" tag="ul" name="fade">
       <li
         class="item"
-        v-for="item in list"
+        v-for="item in this.$store.state.list"
         :key="item.id"
         @click="delItem(item.id)"
       >
         {{ item.task }}
       </li>
     </transition-group>
-    <p class="footer">共计{{ total }}条数据</p>
+    <p class="footer">共计{{ this.$store.getters.total }}条数据</p>
   </div>
 </template>
 
 <script>
 export default {
   name: "List",
-  props: {
-    list: {
-      tyepe: Array,
-      default: [],
-	},
-	delItem:{
-            type:Function
-        }
-  },
-  computed: {
-    total() {
-      return this.list.length;
-    },
-  },
+  methods:{
+    delItem(id){
+      this.$store.commit('delItem',id)
+    }
+  }
 };
 </script>
 
