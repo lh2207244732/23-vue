@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p ref='elem'> {{message}}</p>
+        <!-- 
+            v-once 一次输出,此后不改变
+            v-text='message'等价于{{message}} 输出文本
+            v-html 输出真正的html代码
+        
+        -->
+        <p ref='elem' v-once> {{message}}</p>
+        <p ref='elem' v-text='message'></p>
+        <p ref='elem' v-text='html'></p>
+        <p ref='elem' v-html='html'></p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 创建vue实例
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello vue',
+            html: '<h1>hello word</h1>'
+        }
+    })
+</script>
+
+</html>

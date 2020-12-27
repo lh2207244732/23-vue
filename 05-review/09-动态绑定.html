@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            width: 100px;
+            height: 100px;
+            color: red;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            <!-- 基本属性的绑定 -->
+            <a :href="url">百度</a>
+        </p>
+        <!-- 基本绑定 -->
+        <div :class="activeClass">
+            我是div
+        </div>
+        <!-- 对象语法 -->
+        <div :class="{active:true}">
+            我是div
+        </div>
+        <div :class="objectClass">
+            我是div
+        </div>
+        <!-- 数组语法 -->
+        <div :class="['active']">
+            我是div
+        </div>
+        <div :class="arrClass">
+            我是div
+        </div>
+        <!-- style绑定 -->
+        基本绑定
+        <div style="width: 200px;
+                    height: 200px;
+                    background-color: #f21;">
+            style绑定
+        </div>
+        <!-- 对象语法 -->
+        <div :style="objecStyle">
+            style绑定
+        </div>
+        <div :style="ArrStyle">
+            style绑定数组
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 创建vue实例
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            url: 'http://www.baidu.com',
+            activeClass: 'active',
+            objectClass: {
+                active: true
+            },
+            arrClass: ['active'],
+            objecStyle: {
+                width: '200px',
+                height: '200px',
+                backgroundColor: '#f21'
+            },
+            ArrStyle: [
+                {
+                    width: '200px',
+                    height: '200px',
+                },
+                {
+                    backgroundColor: '#f21'
+                }
+            ]
+        }
+    })
+</script>
+
+</html>

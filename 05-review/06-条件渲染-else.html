@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="number" v-model.number='score'>
+        <p>你的成绩是:{{score}}</p>
+        <p v-if='score>=60'>合格</p>
+        <p v-else>不合格</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 创建vue实例
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            score: 1
+        }
+    })
+</script>
+
+</html>

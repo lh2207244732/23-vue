@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p ref='elem'> {{message}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 创建vue实例
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello vue'
+        },
+        beforeCreate() {
+            console.log('创建组件实例之前自动执行')
+            //获取不到data或props中的数据
+            console.log(this)
+            console.log(this.$el)
+            console.log(this.message)
+        },
+        created() {
+            console.log('组件实例创建成功后执行')
+            console.log(this.message)
+            console.log(this.$el)//还没挂载,所以时undefined
+            console.log(this.$refs.elem)//还没挂载,所以时undefined
+        },
+        beforeMount() {
+            console.log('组件挂在前执行')
+            console.log(this.message)
+            console.log(this.$el)
+            console.log(this.$refs.elem)//还没挂载,所以时undefined
+        },
+        mounted() {//常在此处做网络请求
+            console.log('挂载完成之后执行')
+            console.log(this.message)
+            console.log(this.$el)
+            console.log(this.$refs.elem)
+        },
+        beforeUpdate() {
+            console.log('组件更新前执行')
+        },
+        updated() {
+            console.log('更新之后执行')
+        },
+        beforeDestroy() {//在此处清理定时器
+            console.log('组件卸载之前执行')
+        },
+        destroyed() {
+            console.log('组件卸载之后执行')
+        }
+
+    })
+
+
+</script>
+
+</html>

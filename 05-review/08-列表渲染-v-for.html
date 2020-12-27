@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='person in persons'>{{person.name}}</li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 创建vue实例
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            persons: [
+                { id: 1, name: 'Tom', age: 18 },
+                { id: 2, name: 'Jary', age: 28 }
+            ]
+        }
+    })
+</script>
+
+</html>

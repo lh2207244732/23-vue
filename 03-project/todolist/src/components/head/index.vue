@@ -8,24 +8,22 @@
 <script>
 name: "Head";
 export default {
-    name:'Home',
-    props:{
-      addItem:{
-        type:Function
-      }
+  name: "Home",
+  props: {
+    addItem: {
+      type: Function,
     },
-    data(){
-      return{
-        task:''
-      }
+  },
+  data() {
+    return {
+      task: "",
+    };
+  },
+  methods: {
+    handleAddItem() {
+      this.addItem(this.task), (this.task = "");
     },
-    methods:{
-      handleAddItem(){
-        this.addItem(this.task),
-        this.task=''
-      }
-    }
-
+  },
 };
 </script>
 
